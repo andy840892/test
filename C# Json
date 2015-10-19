@@ -347,7 +347,7 @@ namespace ClassLibrary1
           "notifyafter1": "0c",
           "scheduleName1": "Default Schedule",
           "suspended1": "false"
-        },
+        }, 
         {
           "serialNumber": "483594",
           "actionName": "OrizonTestProfile",
