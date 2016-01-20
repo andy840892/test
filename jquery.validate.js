@@ -1,6 +1,6 @@
-/*!
+﻿/*! 
  * jQuery Validation Plugin 1.11.2222
- *
+ * trst
  * http://bassistance.de/jquery-plugins/jquery-plugin-validation/
  * http://docs.jquery.com/Plugins/Validation
  *
