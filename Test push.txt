@@ -1,7 +1,7 @@
 andyshao test
 1
 2
-<<<<<<< HEAD
+4
 3
 
 branch andy84
