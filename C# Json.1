@@ -1,0 +1,500 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClassLibrary1.TraverseSessionReference;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace ClassLibrary1
+{
+    public class Class1
+    {
+        
+        static void Main(string[] args)
+        {
+            
+            string test = "{'serialNumber':'247979','actionName':'CPU-3-Cycle-Trigger','description':'CPU utilization Notification triggers after 3rd cycle of threshold breach','method1':'email','recipient1':'support@oriel.com.au','rob.hunter@bigair.net.au':'','David.Lee@oriel.com.au':'','notifyon1':'warning','critical':'','repeat1':'0c','notifyafter1':'3c','scheduleName1':'Default Schedule','suspended1':'false'}";
+            // string newtest = @"{""api-response"":{""data"":{""object"":[{""serialNumber"":""247979"",""actionName"":""CPU-3-Cycle-Trigger"",""description"":""CPU utilization Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""247981"",""actionName"":""Memory-Util-3-Cycle-Trigger"",""description"":""Memory Utilization Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""247983"",""actionName"":""2-Cycle-Trigger"",""description"":""Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""2c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""247985"",""actionName"":""CPU-2-Cycle-Trigger"",""description"":""CPU utilization Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""262661"",""actionName"":""Memory-Util-2-Cycle-Trigger"",""description"":""Memory Utilization Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""262663"",""actionName"":""3-Cycle-Trigger"",""description"":""Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""3c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""262665"",""actionName"":""5-Cycle-Trigger"",""description"":""Notification triggers after 5th cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""5c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""347933"",""actionName"":""immediate-trigger"",""description"":"""",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""unknown"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""466063"",""actionName"":""Oriel-louieb-port-test"",""description"":""Using this for Out of Band monitoring.""},{""see device:dge1 port test"":"""",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""unknown"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""483594"",""actionName"":""OrizonTestProfile"",""description"":"""",""method1"":""email"",""recipient1"":""lgelderblom@gmail.com"",""leon.gelderblom@oriel.com.au"":"""",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0423922367@sms.utbox.net"",""notifyon2"":""ok"",""repeat2"":""0c"",""notifyafter2"":""3c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""944067"",""actionName"":""Unknown-test-louieb"",""description"":"""",""method1"":""email"",""recipient1"":""louieb@oriel.com.au"",""notifyon1"":""unknown"",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124488"",""actionName"":""0-Cycle-Trigger"",""description"":""Notify immediately"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""0c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""1124490"",""actionName"":""1-Cycle-Trigger"",""description"":""Notify after 1 Test Cycles"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""1c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""1c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""1124492"",""actionName"":""0-Cycle-Trigger-Monitored"",""description"":""Notify immediately"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124494"",""actionName"":""1-Cycle-Trigger-Monitored"",""description"":""Notify after 1 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""1c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124496"",""actionName"":""2-Cycle-Trigger-Monitored"",""description"":""Notify after 2 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124498"",""actionName"":""3-Cycle-Trigger-Monitored"",""description"":""Notify after 3 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124500"",""actionName"":""5-Cycle-Trigger-Monitored"",""description"":""Notify after 5 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""5c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""}]},""status"":{""code"":""203"",""error"":""false"",""message"":""request accepted, records returned: 18""}}}";
+            string newtest = @"[{""serialNumber"":""247979"",""actionName"":""CPU-3-Cycle-Trigger"",""description"":""CPU utilization Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""247981"",""actionName"":""Memory-Util-3-Cycle-Trigger"",""description"":""Memory Utilization Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""247983"",""actionName"":""2-Cycle-Trigger"",""description"":""Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""2c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""247985"",""actionName"":""CPU-2-Cycle-Trigger"",""description"":""CPU utilization Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""262661"",""actionName"":""Memory-Util-2-Cycle-Trigger"",""description"":""Memory Utilization Notification triggers after 2nd cycle of threshold breach"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""262663"",""actionName"":""3-Cycle-Trigger"",""description"":""Notification triggers after 3rd cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""3c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""262665"",""actionName"":""5-Cycle-Trigger"",""description"":""Notification triggers after 5th cycle of threshold breach"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""5c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""347933"",""actionName"":""immediate-trigger"",""description"":"""",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""unknown"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""466063"",""actionName"":""Oriel-louieb-port-test"",""description"":""Using this for Out of Band monitoring.""},{""see device:dge1 port test"":"""",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""unknown"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""483594"",""actionName"":""OrizonTestProfile"",""description"":"""",""method1"":""email"",""recipient1"":""lgelderblom@gmail.com"",""leon.gelderblom@oriel.com.au"":"""",""notifyon1"":""ok"",""warning"":"""",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0423922367@sms.utbox.net"",""notifyon2"":""ok"",""repeat2"":""0c"",""notifyafter2"":""3c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""944067"",""actionName"":""Unknown-test-louieb"",""description"":"""",""method1"":""email"",""recipient1"":""louieb@oriel.com.au"",""notifyon1"":""unknown"",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124488"",""actionName"":""0-Cycle-Trigger"",""description"":""Notify immediately"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""0c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""1124490"",""actionName"":""1-Cycle-Trigger"",""description"":""Notify after 1 Test Cycles"",""method1"":""email"",""recipient1"":""support@oriel.com.au"",""rob.hunter@bigair.net.au"":"""",""David.Lee@oriel.com.au"":"""",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""1c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false"",""method2"":""compactemail"",""recipient2"":""0421144196@sms.utbox.net"",""notifyon2"":""critical"",""repeat2"":""0c"",""notifyafter2"":""1c"",""scheduleName2"":""Default Schedule"",""suspended2"":""false""},{""serialNumber"":""1124492"",""actionName"":""0-Cycle-Trigger-Monitored"",""description"":""Notify immediately"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""0c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124494"",""actionName"":""1-Cycle-Trigger-Monitored"",""description"":""Notify after 1 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""1c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124496"",""actionName"":""2-Cycle-Trigger-Monitored"",""description"":""Notify after 2 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""2c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124498"",""actionName"":""3-Cycle-Trigger-Monitored"",""description"":""Notify after 3 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""3c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""},{""serialNumber"":""1124500"",""actionName"":""5-Cycle-Trigger-Monitored"",""description"":""Notify after 5 Test Cycles"",""method1"":""email"",""recipient1"":""TraverseAlerts@oriel.com.au"",""notifyon1"":""warning"",""critical"":"""",""repeat1"":""0c"",""notifyafter1"":""5c"",""scheduleName1"":""Default Schedule"",""suspended1"":""false""}]";
+
+            //  Action actionnew = HandleBadJson(test);
+            List<Action> actionlist = HandleBadJsonList(newtest);
+            return;
+            var match = Regex.Match(test, @"(,')(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)(':'')");
+            var result = match.Groups[1].Value+ match.Groups[2].Value+ match.Groups[3].Value; // 1 is the group.. 0 is the whole thing.
+            var formattedName3= Regex.Replace(test, @"(,')(\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*)(':'')", "$2");
+
+            //"$1"
+            var formattedName = Regex.Replace(test, @",'\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*':''", "");
+            var formattedName2 = Regex.Replace(test, @",'\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*':''", "$&".Replace("@",""));
+            var formattedName1 = Regex.Replace("How to make a Facebook game", "facebook", "<span style=\"background:yellow\">$&</span>", RegexOptions.IgnoreCase);
+            Console.WriteLine("Please enter your password"+ test);
+
+ 
+        }
+        private static List<Action> HandleBadJsonList(string badJson)
+        {
+            
+
+            List<Action> actlists = new List<Action>();
+           // Action actnew = null;
+           var xx = JsonConvert.DeserializeObject<List<Action>>(badJson);
+            var xxx = JsonConvert.DeserializeObject< List<Dictionary<string, string>>>(badJson);
+            List <Dictionary<string, string>> dictionaries = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(badJson);
+            // string test = "{'serialNumber':'247979','actionName':'CPU-3-Cycle-Trigger','description':'CPU utilization Notification triggers after 3rd cycle of threshold breach','method1':'email','recipient1':'support@oriel.com.au','rob.hunter@bigair.net.au':'','David.Lee@oriel.com.au':'','notifyon1':'warning','critical':'','repeat1':'0c','notifyafter1':'3c','scheduleName1':'Default Schedule','suspended1':'false'}";
+
+            Action haaya = new Action();
+            int dicsize = dictionaries.Count;
+            int size = 1; // the first entry index is 0. so 1 is the next one.
+            foreach (var entries in dictionaries)
+            {
+                //Console.WriteLine("Test " + dictionaries[10].ToString());
+                if ( entries.ContainsKey("serialNumber"))
+                {
+
+                    if (size <= dicsize& (size < dicsize && !dictionaries[size].ContainsKey("serialNumber") ) )
+                    {
+                        var entry = entries.Select(d =>
+                                        string.Format("\"{0}\": \"{1}\"", d.Key, string.Join(",", d.Value)));
+                        var entrynext = dictionaries[size].Select(d =>
+                                         string.Format("\"{0}\": \"{1}\"", d.Key, string.Join(",", d.Value)));
+                        var entrystring = "{" + string.Join(",", entry) +","+ string.Join(",", entrynext) + "}";
+                        if (!String.IsNullOrEmpty(entrystring))
+                        {
+
+                            haaya = HandleBadJson(entrystring);
+                            actlists.Add(haaya);
+
+                        }
+                    }
+                    else
+                    {
+                        var entry = entries.Select(d =>
+          string.Format("\"{0}\": \"{1}\"", d.Key, string.Join(",", d.Value)));
+                        var entrystring = "{" + string.Join(",", entry) + "}";
+                        if (!String.IsNullOrEmpty(entrystring))
+                        {
+
+                            haaya = HandleBadJson(entrystring);
+                            actlists.Add(haaya);
+
+                        }
+                    }
+                }
+                size = size + 1;
+            }
+
+
+            //actlists.Add(HandleBadJson(test));
+            return actlists;
+        }
+
+        private static Action HandleBadJson(string badJson)
+        {
+            Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(badJson);
+            Action act = new Action();
+            List<string> propertyNames = act.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).Select(p => p.Name).ToList();
+            string currentProperty = "";
+            foreach (var keyValPair in dictionary)
+            {
+                if (propertyNames.Contains(keyValPair.Key))
+                {
+                    currentProperty = keyValPair.Key;
+                    act.GetType().GetProperty(currentProperty).SetValue(act, keyValPair.Value);
+                    continue;
+                }
+                else
+                {
+                    var currentValue = act.GetType().GetProperty(currentProperty).GetValue(act, null);
+                    string value = currentValue + "," + keyValPair.Key;
+                    value = value.Trim(',');
+                    act.GetType().GetProperty(currentProperty).SetValue(act, value);
+                }
+            }
+            return act;
+        }
+
+
+        private static object HandleBadJsonNew(Object act, string badJson)
+        {
+            Dictionary<string, string> dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(badJson);
+            //Action act = new Action();
+            List<string> propertyNames = act.GetType().GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance).Select(p => p.Name).ToList();
+            string currentProperty = "";
+            foreach (var keyValPair in dictionary)
+            {
+                if (propertyNames.Contains(keyValPair.Key))
+                {
+                    currentProperty = keyValPair.Key;
+                    act.GetType().GetProperty(currentProperty).SetValue(act, keyValPair.Value);
+                    continue;
+                }
+                else
+                {
+                    var currentValue = act.GetType().GetProperty(currentProperty).GetValue(act, null);
+                    string value = currentValue + "," + keyValPair.Key;
+                    value = value.Trim(',');
+                    act.GetType().GetProperty(currentProperty).SetValue(act, value);
+                }
+            }
+            return act;
+        }
+
+
+        public class Action
+        {
+
+            public string serialNumber { get; set; }
+            public string actionName { get; set; }
+            public string description { get; set; }
+            public string method1 { get; set; }
+            public string recipient1 { get; set; }
+            public string notifyon1 { get; set; }
+            public string warning { get; set; }
+            public string critical { get; set; }
+            public string repeat1 { get; set; }
+            public string notifyafter1 { get; set; }
+            public string scheduleName1 { get; set; }
+            public string suspended1 { get; set; }
+            public string method2 { get; set; }
+            public string recipient2 { get; set; }
+            public string notifyon2 { get; set; }
+            public string unknown { get; set; }
+            public string repeat2 { get; set; }
+            public string notifyafter2 { get; set; }
+            public string scheduleName2 { get; set; }
+            public string suspended2 { get; set; }
+            public string method3 { get; set; }
+            public string recipient3 { get; set; }
+            public string notifyon3 { get; set; }
+            public string repeat3 { get; set; }
+            public string notifyafter3 { get; set; }
+            public string scheduleName3 { get; set; }
+            public string suspended3 { get; set; }
+            public string method4 { get; set; }
+            public string recipient4 { get; set; }
+            public string notifyon4 { get; set; }
+            public string repeat4 { get; set; }
+            public string notifyafter4 { get; set; }
+            public string scheduleName4 { get; set; }
+            public string suspended4 { get; set; }
+            public string method5 { get; set; }
+            public string recipient5 { get; set; }
+            public string notifyon5 { get; set; }
+            public string repeat5 { get; set; }
+            public string notifyafter5 { get; set; }
+            public string scheduleName5 { get; set; }
+            public string suspended5 { get; set; }
+        }
+
+
+    }
+}
+
+
+
+{
+  "api-response": {
+    "data": {
+      "object": [
+        {
+          "serialNumber": "247979",
+          "actionName": "CPU-3-Cycle-Trigger",
+          "description": "CPU utilization Notification triggers after 3rd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "3c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "247981",
+          "actionName": "Memory-Util-3-Cycle-Trigger",
+          "description": "Memory Utilization Notification triggers after 3rd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "3c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "247983",
+          "actionName": "2-Cycle-Trigger",
+          "description": "Notification triggers after 2nd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "2c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false",
+          "method2": "compactemail",
+          "recipient2": "0421144196@sms.utbox.net",
+          "notifyon2": "critical",
+          "repeat2": "0c",
+          "notifyafter2": "2c",
+          "scheduleName2": "Default Schedule",
+          "suspended2": "false"
+        },
+        {
+          "serialNumber": "247985",
+          "actionName": "CPU-2-Cycle-Trigger",
+          "description": "CPU utilization Notification triggers after 2nd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "2c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "262661",
+          "actionName": "Memory-Util-2-Cycle-Trigger",
+          "description": "Memory Utilization Notification triggers after 2nd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "2c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "262663",
+          "actionName": "3-Cycle-Trigger",
+          "description": "Notification triggers after 3rd cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "3c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false",
+          "method2": "compactemail",
+          "recipient2": "0421144196@sms.utbox.net",
+          "notifyon2": "critical",
+          "repeat2": "0c",
+          "notifyafter2": "3c",
+          "scheduleName2": "Default Schedule",
+          "suspended2": "false"
+        },
+        {
+          "serialNumber": "262665",
+          "actionName": "5-Cycle-Trigger",
+          "description": "Notification triggers after 5th cycle of threshold breach",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "5c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "347933",
+          "actionName": "immediate-trigger",
+          "description": "",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "ok",
+          "warning": "",
+          "critical": "",
+          "unknown": "",
+          "repeat1": "0c",
+          "notifyafter1": "0c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "466063",
+          "actionName": "Oriel-louieb-port-test",
+          "description": "Using this for Out of Band monitoring."
+        },
+        {
+          "see device:dge1 port test": "",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "ok",
+          "warning": "",
+          "critical": "",
+          "unknown": "",
+          "repeat1": "0c",
+          "notifyafter1": "0c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        }, 
+        {
+          "serialNumber": "483594",
+          "actionName": "OrizonTestProfile",
+          "description": "",
+          "method1": "email",
+          "recipient1": "lgelderblom@gmail.com",
+          "leon.gelderblom@oriel.com.au": "",
+          "notifyon1": "ok",
+          "warning": "",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "3c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false",
+          "method2": "compactemail",
+          "recipient2": "0423922367@sms.utbox.net",
+          "notifyon2": "ok",
+          "repeat2": "0c",
+          "notifyafter2": "3c",
+          "scheduleName2": "Default Schedule",
+          "suspended2": "false"
+        },
+        {
+          "serialNumber": "944067",
+          "actionName": "Unknown-test-louieb",
+          "description": "",
+          "method1": "email",
+          "recipient1": "louieb@oriel.com.au",
+          "notifyon1": "unknown",
+          "repeat1": "0c",
+          "notifyafter1": "0c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "1124488",
+          "actionName": "0-Cycle-Trigger",
+          "description": "Notify immediately",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "0c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false",
+          "method2": "compactemail",
+          "recipient2": "0421144196@sms.utbox.net",
+          "notifyon2": "critical",
+          "repeat2": "0c",
+          "notifyafter2": "0c",
+          "scheduleName2": "Default Schedule",
+          "suspended2": "false"
+        },
+        {
+          "serialNumber": "1124490",
+          "actionName": "1-Cycle-Trigger",
+          "description": "Notify after 1 Test Cycles",
+          "method1": "email",
+          "recipient1": "support@oriel.com.au",
+          "rob.hunter@bigair.net.au": "",
+          "David.Lee@oriel.com.au": "",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "1c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false",
+          "method2": "compactemail",
+          "recipient2": "0421144196@sms.utbox.net",
+          "notifyon2": "critical",
+          "repeat2": "0c",
+          "notifyafter2": "1c",
+          "scheduleName2": "Default Schedule",
+          "suspended2": "false"
+        },
+        {
+          "serialNumber": "1124492",
+          "actionName": "0-Cycle-Trigger-Monitored",
+          "description": "Notify immediately",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "0c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "1124494",
+          "actionName": "1-Cycle-Trigger-Monitored",
+          "description": "Notify after 1 Test Cycles",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "1c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "1124496",
+          "actionName": "2-Cycle-Trigger-Monitored",
+          "description": "Notify after 2 Test Cycles",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "2c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "1124498",
+          "actionName": "3-Cycle-Trigger-Monitored",
+          "description": "Notify after 3 Test Cycles",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "3c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        },
+        {
+          "serialNumber": "1124500",
+          "actionName": "5-Cycle-Trigger-Monitored",
+          "description": "Notify after 5 Test Cycles",
+          "method1": "email",
+          "recipient1": "TraverseAlerts@oriel.com.au",
+          "notifyon1": "warning",
+          "critical": "",
+          "repeat1": "0c",
+          "notifyafter1": "5c",
+          "scheduleName1": "Default Schedule",
+          "suspended1": "false"
+        }
+      ]
+    },
+    "status": {
+      "code": "203",
+      "error": "false",
+      "message": "request accepted, records returned: 18"
+    }
+  }
+}
