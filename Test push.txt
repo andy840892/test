@@ -8,6 +8,5 @@ andyshao test
 branch andy84
 1
 =======
-
->>>>>>> andyshao1
+ 
 2
